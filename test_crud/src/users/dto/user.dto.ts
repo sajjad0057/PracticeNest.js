@@ -1,16 +1,19 @@
 import {
   IsEmail,
   IsEnum,
+  IsInt,
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
 } from 'class-validator';
 import { UserRole } from 'src/enums/user-role.enum';
 
 export class UserDto {
-  @IsNumber()
+  @IsOptional() // This property is optional
+  @IsInt()
   id: number;
-  
+
   @IsString()
   @IsNotEmpty({ message: 'User must have a name.' })
   name: string;
