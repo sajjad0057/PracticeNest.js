@@ -25,14 +25,13 @@ export class EmployeesService {
       }
 
       return employees;
-      
     } else {
-      return this.databaseService.employee.findMany();
+      return await this.databaseService.employee.findMany();
     }
   }
 
   async findOne(id: number) {
-    return this.databaseService.employee.findUnique({
+    return await this.databaseService.employee.findUnique({
       where: {
         id,
       },
@@ -40,7 +39,7 @@ export class EmployeesService {
   }
 
   async update(id: number, updateEmployeeDto: Prisma.EmployeeUpdateInput) {
-    return this.databaseService.employee.update({
+    return await this.databaseService.employee.update({
       where: {
         id,
       },
@@ -49,7 +48,7 @@ export class EmployeesService {
   }
 
   async remove(id: number) {
-    return this.databaseService.employee.delete({
+    return await this.databaseService.employee.delete({
       where: {
         id,
       },
