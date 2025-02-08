@@ -42,13 +42,15 @@ export class UsersService {
     console.log(role);
 
     if (role) {
-      const rolesArray =  this.users.filter((user) => user.role === role);
-      if(!rolesArray.length){
-        throw new NotFoundException("user roles not found")
+      const rolesArray = this.users.filter((user) => user.role === role);
+      if (!rolesArray.length) {
+        throw new NotFoundException('user roles not found');
       }
 
       return rolesArray;
     }
+
+    return this.users;
   }
 
   findOne(id: number) {
