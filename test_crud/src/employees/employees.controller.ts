@@ -25,7 +25,7 @@ export class EmployeesController {
     return this.employeesService.create(createEmployeeDto);
   }
 
-  @SkipThrottle({ default: false })
+  @Throttle({ short: { ttl: 1000, limit: 1 } })
   @Get()
   findAll(
     @Ip() ip: string,
@@ -35,7 +35,7 @@ export class EmployeesController {
     return this.employeesService.findAll(role);
   }
 
-  @Throttle({ short: { ttl: 1000, limit: 1 } })
+  @SkipThrottle({ default: false })
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.employeesService.findOne(+id);
